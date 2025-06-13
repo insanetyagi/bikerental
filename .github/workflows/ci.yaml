@@ -33,9 +33,5 @@ jobs:
         tags: |
           ${{ env.DOCKER_IMAGE }}:latest
           ${{ env.DOCKER_IMAGE }}:${{ github.sha }}
-        cache-from: |
-          type=registry,ref=${{ env.DOCKER_IMAGE }}:buildcache
-          type=gha
-        cache-to: |
-          type=registry,ref=${{ env.DOCKER_IMAGE }}:buildcache,mode=max
-          type=gha,mode=max
+        cache-from: type=gha
+        cache-to: type=gha,mode=max
