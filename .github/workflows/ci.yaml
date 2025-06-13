@@ -6,9 +6,6 @@ on:
   pull_request:
     branches: [ main ]
 
-env:
-  DOCKER_IMAGE: ${{ secrets.DOCKERHUB_USERNAME }}/bikerental
-
 jobs:
   build-and-push:
     runs-on: ubuntu-latest
@@ -30,6 +27,6 @@ jobs:
       with:
         context: .
         push: true
-        tags: ${{ env.DOCKER_IMAGE }}:latest,${{ env.DOCKER_IMAGE }}:${{ github.sha }}
+        tags: ${{ secrets.DOCKERHUB_USERNAME }}/bikerental:latest,${{ secrets.DOCKERHUB_USERNAME }}/bikerental:${{ github.sha }}
         cache-from: type=gha
         cache-to: type=gha,mode=max
